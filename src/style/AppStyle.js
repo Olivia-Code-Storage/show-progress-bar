@@ -24,10 +24,12 @@ export const PercentageDiv = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 10px 0px 0px 10px;
+  border-radius: ${({ $percentage }) => ($percentage >= 97 ? '10px' : '10px 0px 0px 10px')};
   ${({ $percentageColor }) => `background-color: ${$percentageColor};`}
   ${({ $fontColor }) => `color: ${$fontColor};`}
   ${({ $percentage }) =>
-    $percentage &&
+    0 < $percentage &&
+    100 >= $percentage &&
     css`
       width: ${$percentage}%;
       animation: ${fillAnimation($percentage)} 3s ease-out;
